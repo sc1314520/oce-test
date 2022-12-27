@@ -1,0 +1,27 @@
+package request;
+
+import java.io.IOException;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// 獲取請求頭數據
+@WebServlet("/request2")
+public class request3 extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 獲取 user-agent
+		String agent =req.getHeader("user-agent");
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+
+}

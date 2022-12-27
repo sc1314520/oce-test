@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<img alt="" src="/EE/check" id="img">
+	<a id="change" href="">看不清楚換一張？</a>
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		var change = document.getElementById("change");
+		var img = document.getElementById("img");
+		img.onclick=function(){
+			img.src="/EE/check?"+new Date();
+		}
+	}
+</script>
+</html>

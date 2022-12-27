@@ -1,0 +1,29 @@
+package response.download;
+
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/downloader")
+public class downloader extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 獲取請求參數
+		String filename = req.getParameter("filename");
+		// 使用字節輸入流加載進內存
+		ServletContext servletContext =this.getServletContext();
+		servletContext.getRealPath("/img/"+filename);
+	}
+
+}

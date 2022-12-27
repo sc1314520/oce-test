@@ -1,0 +1,4 @@
+INDEX VERSION 1.4+/Users/blc0000421gmail.com/Desktop/oce-test/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1562489674.index
+2542847587.index
+1206441616.index

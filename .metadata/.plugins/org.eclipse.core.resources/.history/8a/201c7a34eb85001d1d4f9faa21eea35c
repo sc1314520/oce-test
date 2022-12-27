@@ -1,0 +1,34 @@
+package response.check;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/check")
+public class check extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		// 創建驗證圖
+		int width =100;
+		int height=50;
+		BufferedImage image =new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		// 美化圖片
+		
+		// 輸出圖片
+		ImageIO.write(image, "jpg", resp.getOutputStream());
+	}
+	
+}

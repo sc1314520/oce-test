@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/EE/img/1.jpg">圖片一</a>
+	<hr>
+	<a href="/EE/img/2.jpg">圖片二</a>
+</body>
+</html>
