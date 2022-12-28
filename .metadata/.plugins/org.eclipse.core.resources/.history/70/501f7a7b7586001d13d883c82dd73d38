@@ -24,7 +24,6 @@ public class session1 extends HttpServlet{
 		HttpSession session = req.getSession();
 		//存取 Session
 		session.setAttribute("msg", "hello session");
-		
 	}
 
 }
