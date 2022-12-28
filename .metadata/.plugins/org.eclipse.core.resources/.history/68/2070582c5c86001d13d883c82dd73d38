@@ -1,0 +1,36 @@
+package session;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/session4")
+public class session4 extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//獲取 Session
+		HttpSession session = req.getSession();
+		
+		// 瀏覽器關閉後重啟，獲得的session不同。
+		System.out.println(session);
+		
+		// 解決方法
+		Cookie c =new Cookie("JSESSIONID", session.getId());
+		c.setMaxAge(60*60);
+		resp.addCookie(c);
+	}
+
+}

@@ -1,0 +1,37 @@
+package cookie.rememberTime;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/remember")
+public class remember extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		Cookie[] cs = req.getCookies();
+		if(cs!=null && cs.length>0) {
+			for(Cookie c :cs) {
+				String name=c.getName();
+				if("lastTime".equals(name)) {
+					String value =c.getValue();
+					resp.getWriter().write("<h1>歡迎回來!! 上次訪問時間："+value+"</h1>");
+					
+					
+				}
+			}
+		}
+	}
+
+}
