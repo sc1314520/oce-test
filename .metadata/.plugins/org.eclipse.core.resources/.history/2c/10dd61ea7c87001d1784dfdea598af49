@@ -1,0 +1,29 @@
+package proxy;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+public class ProxyTest {
+	public static void main(String[] args) {
+		Lenovo lenovo =new Lenovo();
+		
+		//動態代理增強 (類加載器,接口數組,處理器）
+		SaleComputer proxy_lenovo = (SaleComputer)Proxy.newProxyInstance(lenovo.getClass().getClassLoader(),lenovo.getClass().getInterfaces(), new InvocationHandler() {
+			
+			// 代理邏輯編寫的方法：代理對象調用的所有方法都會觸發該方法執行。
+			@Override
+			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+				System.out.println("該方法執行了!!");
+				System.out.println(method.getName());
+				return null;
+			}
+		});
+		
+		
+		String computer =proxy_lenovo.sale(8000);
+		System.out.println(computer);
+		
+		proxy_lenovo.show();
+	}
+}

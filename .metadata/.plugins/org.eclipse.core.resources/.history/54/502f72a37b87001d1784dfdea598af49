@@ -1,0 +1,11 @@
+package proxy;
+
+public class Lenovo implements SaleComputer{
+
+	@Override
+	public String sale(double money) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

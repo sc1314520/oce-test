@@ -1,0 +1,21 @@
+package listener;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+public class demo1 implements ServletContextListener{
+
+	// 服務器關閉後自動調用
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+		System.out.println("銷毀");
+	}
+
+	
+	// 服務器啟動後自動調用
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		System.out.println("創建");
+	}
+
+}

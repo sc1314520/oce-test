@@ -1,0 +1,37 @@
+package filter.sensitive;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+
+// @WebFilter("/*")
+public class sensitive implements Filter {
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		// 創建代理對象
+		ServletRequest proxy_req = (ServletRequest)Proxy.newProxyInstance(request.getClass().getClassLoader(),request.getClass().getInterfaces(), new InvocationHandler() {
+			
+			@Override
+			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+				//增強 getParameter() 方法
+				if(method.getName().equals("getParameter")) {
+					//增強返回值
+					
+				}
+				return method.invoke(request, args);
+			}
+		});
+		
+	}
+
+}

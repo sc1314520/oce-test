@@ -1,0 +1,41 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="el.User"%>
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		User user =new User();
+		user.setName("xing");
+		user.setAge(23);
+		user.setBirthday(new Date());
+		
+		request.setAttribute("us", user);
+		
+		List<String> list =new ArrayList<>();
+		list.add("aaa");
+		list.add("bbb");
+		request.setAttribute("list", list);
+	%>
+	<h3>獲取對象</h3>
+	${ requestScope.us } <br>
+	
+	<%-- 通過對象屬性獲取 --%>
+	<!-- 不存在會報錯！！ -->
+	${ requestScope.us.name } <br>
+	${ requestScope.us.age } <br>
+	${ requestScope.us.birthday } <br>
+	${ us.birthday } <br>
+	<!--  獲取月期 -> new Date().getMonth() -->
+	${ us.birthday.month } <br>
+	<!--  返回格式化日期 -->
+	${us.birStr }
+</body>
+</html>
